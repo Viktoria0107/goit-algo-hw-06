@@ -13,7 +13,7 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value):
-        if len(value) == 10 and value.isdigit():
+        if len(value) == 10:
             self.value = value
         else:
             raise ValueError("Ten signs are expected")

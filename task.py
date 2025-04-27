@@ -13,7 +13,7 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value):
-        if len(value) == 10:
+        if len(value) == 10 and value.isdigit():
             self.value = value
         else:
             raise ValueError("Ten signs are expected")
@@ -32,13 +32,13 @@ class Record:
         self.phones.append(phone)
 
     def remove_phone(self, number_phone):
-        phone = self.find_phone(number_phone)
-        return self.phones.remove(phone)
+        self.find_phone(number_phone)
+        return self.phones.remove(number_phone)
     
 
     def edit_phone(self, number_phone, new_number_phone):
         phone = self.find_phone(number_phone)
-        if phone:
+        if number_phone:
             self.phones.remove(phone)
             self.add_phone(new_number_phone)
         else:
@@ -100,7 +100,7 @@ print(book)
 
     # Знаходження та редагування телефону для John
 john = book.find("John")
-john.edit_phone("1234567890", "1112223333")
+john.edit_phone("1234567890", "1122233333")
 
 print(john)  # Виведення: Contact name: John, phones: 1112223333; 5555555555
 

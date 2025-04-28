@@ -38,9 +38,9 @@ class Record:
 
     def edit_phone(self, number_phone, new_number_phone):
         phone = self.find_phone(number_phone)
-        if number_phone:
-            self.phones.remove(phone)
+        if phone:
             self.add_phone(new_number_phone)
+            self.phones.remove(phone)
         else:
             raise ValueError("Enter the phone number again") 
            
@@ -104,7 +104,7 @@ john.edit_phone("1234567890", "1122233333")
 
 print(john)  # Виведення: Contact name: John, phones: 1112223333; 5555555555
 
-    # Пошук конкретного телефону у записі John
+    # Пошук конкретного телефону у записі Jo
 found_phone = john.find_phone("5555555555")
 print(f"{john.name}: {found_phone}")  # Виведення: John: 5555555555
 
